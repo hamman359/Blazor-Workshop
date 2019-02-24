@@ -1,5 +1,14 @@
 ﻿@inherits BlazorLayoutComponent
 
+<div class="top-bar">
+    <img src="img/logo.svg" class="logo" />
+
+    <NavLink  href="" class="nav-tab" Match="NavLinkMatch.All">
+        <img src="img/pizza-slice.svg" />
+        <div>Get Pizza</div>
+    </NavLink>
+</div>
+
 <div class="content">
     @Body
 </div>
