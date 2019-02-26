@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject HttpClient HttpClient
+@inject IUriHelper UriHelper
 
 <div class="main">
     <ul class="pizza-cards">
@@ -47,10 +48,9 @@
 
 @if (showingConfigureDialog)
 {
-    <ConfigurePizzaDialog
-        Pizza="configuringPizza"
-        OnCancel="CancelConfigurePizzaDialog"
-        OnConfirm="ConfirmConfigurePizzaDialog" />
+    <ConfigurePizzaDialog Pizza="configuringPizza"
+                          OnCancel="CancelConfigurePizzaDialog"
+                          OnConfirm="ConfirmConfigurePizzaDialog" />
 }
 
 @functions {
@@ -103,5 +103,7 @@
     {
         await HttpClient.PostJsonAsync("/orders", order);
         order = new Order();
+
+        UriHelper.NavigateTo("myorders");
     }
 }
